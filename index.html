@@ -193,8 +193,6 @@
         .Brothersgender-buttons,
         .hairmakeup-buttons,
         .kimono-buttons,
-        .kimono2-buttons,
-        .kimono3-buttons,
         .kimono4-buttons,
         .preparationphoto-buttons,
         .Freshflowerphotography-buttons,
@@ -213,8 +211,6 @@
         .kibou2-buttons button,
         .kibou3-buttons button,
         .kimono-buttons button,
-        .kimono2-buttons button,
-        .kimono3-buttons button,
         .kimono4-buttons button,
         .childsgender-buttons button,
         .Brothersgender-buttons button,
@@ -241,8 +237,6 @@
         .kibou2-buttons button.active,
         .kibou3-buttons button.active,
         .kimono-buttons button.active,
-        .kimono2-buttons button.active,
-        .kimono3-buttons button.active,
         .kimono4-buttons button.active,
         .childsgender-buttons button.active,
         .Brothersgender-buttons button.active,
@@ -943,16 +937,9 @@
 </head>
 
 <body>
-    <!-- 右側の追従ナビ -->
-    <div class="side-nav" id="sideNav">
-        <a href="#section-message">
-            <span>⇩</span>
-            <i class="fas fa-comment"></i>
-        </a>
-    </div>
 
     <div class="container">
-        <h1>すずき写真事務所<br>出張 ニューボーンフォト
+        <h1><span style="font-size: 18px;">すずき写真事務所</span><br>出張 ニューボーンフォト
             <div class="info-text">こちらのフォームは"公式LINEから"でのみ<br>送ることができます。</div>
         </h1>
         <div class="label">お客様名<span class="required">必須</span></div>
@@ -961,7 +948,7 @@
         <div class="label">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
-        <div class="label">お伺いするご住所の<span class="required">必須</span><br>表札名(里帰りの場合)</div>
+        <div class="label">出張先ご住所の<span class="required">必須</span><br>表札名(里帰りの場合)</div>
         <input type="text" id="hyousatu" placeholder="表札名を入力してください" oninput="saveInput('hyousatu')">
 
         <div class="highlight-background">
@@ -978,7 +965,7 @@
         <div class="kibou1-buttons">
             <button type="button" id="firstkibou1" onclick="selectkibou1(this)">10時</button>
             <button type="button" id="repeatkibou1" onclick="selectkibou1(this)">13時</button>
-            <button type="button" id="sankibou1" onclick="selectkibou1(this)">相談したい</button>
+            <button type="button" id="sankibou1" onclick="selectkibou1(this)">検討中</button>
         </div>
 
         <div class="highlight-background">
@@ -995,11 +982,11 @@
         <div class="kibou2-buttons">
             <button type="button" id="firstkibou2" onclick="selectkibou2(this)">10時</button>
             <button type="button" id="repeatkibou2" onclick="selectkibou2(this)">13時</button>
-            <button type="button" id="sankibou2" onclick="selectkibou2(this)">相談したい</button>
+            <button type="button" id="sankibou2" onclick="selectkibou2(this)">検討中</button>
         </div>
 
         <div class="highlight-background">
-            <span class="kibounitizi">第3希望日※任意</span>
+            <span class="kibounitizi">第3希望日(任意)</span>
         </div>
 
         <!-- カスタム placeholder 表示用 -->
@@ -1008,11 +995,11 @@
             <input type="date" id="date3" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
-        <div class="label">希望時間<span class="required">必須</span></div>
+        <div class="labelContent">希望時間</div>
         <div class="kibou3-buttons">
             <button type="button" id="firstkibou3" onclick="selectkibou3(this)">10時</button>
             <button type="button" id="repeatkibou3" onclick="selectkibou3(this)">13時</button>
-            <button type="button" id="sankibou3" onclick="selectkibou3(this)">相談したい</button>
+            <button type="button" id="sankibou3" onclick="selectkibou3(this)">検討中</button>
         </div>
 
         <div class="label">プランをお選びください<span class="required">必須</span></div>
@@ -1039,10 +1026,7 @@
             <button type="button" onclick="selectFreshflowerphotography(this)">帝王切開</button>
         </div>
 
-        <div class="labelnigyou">出張先住所<br>※里帰りの場合や住所と<br>出張先が異なる場合のみ記入</div>
-        <textarea id="Businessaddress" placeholder="出張先をご記入ください。"></textarea>
-
-        <div class="labelnigyou">お子様のお名前<br>(決まっていれば)</div>
+        <div class="labelnigyou">お子様のお名前<br><span style="font-size: 13px;">（決まっていれば）</span></div>
         <input type="text" id="childsname" placeholder="例：祖母2人、父、母 など">
 
         <div class="label">お子様の性別（任意）</div>
@@ -1052,12 +1036,12 @@
             <button type="button" onclick="selectchildsgender(this)">わからない</button>
         </div>
 
-        <div class="label">出生体重<span class="required">必須</span></div>
+        <div class="labelContent">出生体重</div>
         <input type="tel" id="birthweight" placeholder="出生体重を入力してください">
 
         <div class="labelContent">
-            ご兄弟情報（任意）<br>
-            <span class="small-note">※いらっしゃらない場合は未記入で大丈夫です。</span>
+            ご兄弟情報<br>
+            <span class="small-note">第一子の方は未記入で大丈夫です。</span>
         </div>
         <div class="info-text">【一人目】ご兄弟のお名前</div>
         <input type="text" id="mugwortmainkid" placeholder="ご兄弟のお名前をご記入ください">
@@ -1065,32 +1049,12 @@
         <div class="kimono-buttons">
             <button type="button" onclick="selectkimono(this)">男の子</button>
             <button type="button" onclick="selectkimono(this)">女の子</button>
-            <button type="button" onclick="selectkimono(this)">相談したい</button>
         </div>
         <div class="info-text">【一人目】ご兄弟の年齢</div>
         <input type="tel" id="mugwortparticipants" placeholder="ご兄弟の年齢をご記入ください">
 
-        <div class="info-text">【二人目】ご兄弟のお名前</div>
-        <input type="text" id="mugwortmainkid2" placeholder="ご兄弟のお名前をご記入ください">
-        <div class="info-text">【二人目】ご兄弟の性別</div>
-        <div class="kimono2-buttons">
-            <button type="button" onclick="selectkimono2(this)">男の子</button>
-            <button type="button" onclick="selectkimono2(this)">女の子</button>
-            <button type="button" onclick="selectkimono2(this)">相談したい</button>
-        </div>
-        <div class="info-text">【二人目】ご兄弟の年齢</div>
-        <input type="tel" id="mugwortparticipants2" placeholder="ご兄弟の年齢をご記入ください">
-
-        <div class="info-text">【三人目】ご兄弟のお名前</div>
-        <input type="text" id="mugwortmainkid3" placeholder="ご兄弟のお名前をご記入ください">
-        <div class="info-text">【三人目】ご兄弟の性別</div>
-        <div class="kimono3-buttons">
-            <button type="button" onclick="selectkimono3(this)">男の子</button>
-            <button type="button" onclick="selectkimono3(this)">女の子</button>
-            <button type="button" onclick="selectkimono3(this)">相談したい</button>
-        </div>
-        <div class="info-text">【三人目】ご兄弟の年齢</div>
-        <input type="tel" id="mugwortparticipants3" placeholder="ご兄弟の年齢をご記入ください">
+        <div class="info-text">【二人目以降】</div>
+        <input type="text" id="mugwortmainkid2" placeholder="ご兄弟のお名前・性別・年齢をご記入ください">
 
         <div class="labelnigyou">撮影に参加される方の<br>人数と続柄（任意）</div>
         <input type="text" id="Participateintheshooting" placeholder="撮影に参加される方の人数と続柄をご記入ください">
@@ -1099,14 +1063,14 @@
         <div class="kimono4-buttons">
             <button type="button" onclick="selectkimono4(this)">有り</button>
             <button type="button" onclick="selectkimono4(this)">無し</button>
-            <button type="button" onclick="selectkimono4(this)">相談したい</button>
+            <button type="button" onclick="selectkimono4(this)">検討中</button>
         </div>
 
         <div class="label">◎お支度ご希望の有無<span class="required">必須</span></div>
         <div class="hairmakeup-buttons">
             <button type="button" onclick="selecthairmakeup(this)">有り</button>
             <button type="button" onclick="selecthairmakeup(this)">無し</button>
-            <button type="button" onclick="selecthairmakeup(this)">相談したい</button>
+            <button type="button" onclick="selecthairmakeup(this)">検討中</button>
         </div>
 
         <div class="labelContent">メッセージ<br>（質問等お気軽にご記入ください）</div>
@@ -1122,8 +1086,6 @@
         let kibou2Count = '';
         let kibou3Count = '';
         let kimonoCount = '';
-        let kimono2Count = '';
-        let kimono3Count = '';
         let kimono4Count = '';
         let hairmakeupCount = '';
         let preparationphotoCount = '';
@@ -1143,7 +1105,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             liff.init({
-                liffId: '2007684329-xMNmbMB1'
+                liffId: '2005254357-zKma9BZk'
             }).then(() => {
                 console.log('LIFF初期化成功');
             }).catch((err) => {
@@ -1390,21 +1352,6 @@
         }
 
         // 訪問回数の選択（初回・リピート）
-        function selectkimono2(element) {
-            document.querySelectorAll('.kimono2-buttons button').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            kimono2Count = element.innerText;
-
-            // 選択された訪問回数に対応する時間を取得
-            selectedkimono2Time = kimono2Times[kimono2Count];
-
-            console.log('選択された訪問回数の時間:', selectedkimono2Time);
-
-            // カレンダーを更新するために取得する日付を渡す
-            fetchAvailability(currentDate);
-        }
-
-        // 訪問回数の選択（初回・リピート）
         function selectkimono4(element) {
             document.querySelectorAll('.kimono4-buttons button').forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
@@ -1414,21 +1361,6 @@
             selectedkimono4Time = kimono4Times[kimono4Count];
 
             console.log('選択された訪問回数の時間:', selectedkimono4Time);
-
-            // カレンダーを更新するために取得する日付を渡す
-            fetchAvailability(currentDate);
-        }
-
-        // 訪問回数の選択（初回・リピート）
-        function selectkimono3(element) {
-            document.querySelectorAll('.kimono3-buttons button').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            kimono3Count = element.innerText;
-
-            // 選択された訪問回数に対応する時間を取得
-            selectedkimono3Time = kimono3Times[kimono3Count];
-
-            console.log('選択された訪問回数の時間:', selectedkimono3Time);
 
             // カレンダーを更新するために取得する日付を渡す
             fetchAvailability(currentDate);
@@ -1542,18 +1474,14 @@
     phone: document.getElementById('phone').value.trim(),
     hyousatu: document.getElementById('hyousatu').value.trim(),
     birthweight: document.getElementById('birthweight').value.trim(),
-    Businessaddress: document.getElementById('Businessaddress').value.trim(),
     childsname: document.getElementById('childsname').value.trim(),
     Participateintheshooting: document.getElementById('Participateintheshooting').value.trim(),
                 mugwortparticipants: document.getElementById('mugwortparticipants').value.trim(),
-                mugwortparticipants2: document.getElementById('mugwortparticipants2').value.trim(),
-                mugwortparticipants3: document.getElementById('mugwortparticipants3').value.trim(),
                 mugwortmainkid: document.getElementById('mugwortmainkid').value.trim(),
-                mugwortmainkid2: document.getElementById('mugwortmainkid2').value.trim(),
-                mugwortmainkid3: document.getElementById('mugwortmainkid3').value.trim(), 
+                mugwortmainkid2: document.getElementById('mugwortmainkid2').value.trim(), 
     visitCount,
     hairmakeupCount,
-    kimonoCount, kimono2Count, kimono3Count, kimono4Count,
+    kimonoCount, kimono4Count,
     FreshflowerphotographyCount,
     childsgenderCount,
     BrothersgenderCount, // ← スペル修正
@@ -1587,9 +1515,9 @@
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `【予約フォーム】\nお名前\n・${formData.name}\n\n電話番号\n・${formData.phone}\n\n表札名\n・${formData.hyousatu}\n\nプラン\n・${formData.visitCount}\n\n撮影内容\n・${formData.FreshflowerphotographyCount}\n\nお子様のお誕生日\n・${formatDateOnly(formData.dates[3])}\n\n出張先住所\n・${formData.Businessaddress}\n\nお子様のお名前\n・${formData.childsname}\n\nお子様の性別\n・${formData.childsgenderCount}\n\n出生体重\n・${formData.birthweight}\n\n｟ご兄弟のお名前｠\n・${formData.mugwortmainkid}\n\n｟ご兄弟の性別｠\n・${formData.kimonoCount}\n\n｟ご兄弟の年齢｠\n・${formData.mugwortparticipants}\n\n｟二人目ご兄弟のお名前｠\n・${formData.mugwortmainkid2}\n\n｟二人目ご兄弟の性別｠\n・${formData.kimono2Count}\n\n｟二人目ご兄弟の年齢｠\n・${formData.mugwortparticipants2}\n\n｟三人目ご兄弟のお名前｠\n・${formData.mugwortmainkid3}\n\n｟三人目ご兄弟の性別｠\n・${formData.kimono3Count}\n\n｟三人目ご兄弟の年齢｠\n・${formData.mugwortparticipants3}\n\n撮影に参加\n・${formData.Participateintheshooting}\n\n生花撮影\n・${formData.kimono4Count}\n\nお支度\n・${formData.hairmakeupCount}\n\n【希望日時】\n｟第一希望日｠\n${formatDateWithTime(formData.dates[0])}\n｟希望時間1｠\n・${formData.kibou1Count}\n\n｟第二希望日｠\n${formatDateWithTime(formData.dates[1])}\n｟希望時間2｠\n・${formData.kibou2Count}\n\n｟第三希望日｠\n${formatDateWithTime(formData.dates[2])}\n｟希望時間3｠\n・${formData.kibou3Count}\n\n｟メッセージ｠\n${formData.message}`
+                text: `【予約フォーム】\nお名前\n・${formData.name}\n\n電話番号\n・${formData.phone}\n\n表札名\n・${formData.hyousatu}\n\nプラン\n・${formData.visitCount}\n\nお子様のお誕生日\n・${formatDateOnly(formData.dates[3])}\n\n自然分娩 or 帝王切開\n・${formData.FreshflowerphotographyCount}\n\nお子様のお名前\n・${formData.childsname}\n\nお子様の性別\n・${formData.childsgenderCount}\n\n出生体重\n・${formData.birthweight}\n\n｟ご兄弟のお名前｠\n・${formData.mugwortmainkid}\n\n｟ご兄弟の性別｠\n・${formData.kimonoCount}\n\n｟ご兄弟の年齢｠\n・${formData.mugwortparticipants}\n\n｟二人目ご兄弟のお名前｠\n・${formData.mugwortmainkid2}\n\n撮影に参加\n・${formData.Participateintheshooting}\n\n生花撮影\n・${formData.kimono4Count}\n\nお支度\n・${formData.hairmakeupCount}\n\n【希望日時】\n｟第一希望日｠\n${formatDateWithTime(formData.dates[0])}\n｟希望時間1｠\n・${formData.kibou1Count}\n\n｟第二希望日｠\n${formatDateWithTime(formData.dates[1])}\n｟希望時間2｠\n・${formData.kibou2Count}\n\n｟第三希望日｠\n${formatDateWithTime(formData.dates[2])}\n｟希望時間3｠\n・${formData.kibou3Count}\n\n｟メッセージ｠\n${formData.message}`
             }]).then(() => {
-                alert('当日キャンセルは無いようにお願いいたします。');
+                alert('お問合せありがとうございます。追って担当者から返信をさせて頂きます。');
                 liff.closeWindow();
             }).catch((err) => {
                 console.error('メッセージの送信に失敗しました', err);
