@@ -948,7 +948,10 @@
         <div class="label">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
-        <div class="label">出張先ご住所の<span class="required">必須</span><br>表札名(里帰りの場合)</div>
+        <div class="label">ご住所<span class="required">必須</span></div>
+        <input type="text" id="Yourresidentialaddress" placeholder="ご住所を入力してください" oninput="saveInput('Yourresidentialaddress')">
+
+        <div class="labelnigyou">出張先ご住所の<br>表札名(里帰りの場合)</div>
         <input type="text" id="hyousatu" placeholder="表札名を入力してください" oninput="saveInput('hyousatu')">
 
         <div class="highlight-background">
@@ -1027,7 +1030,7 @@
         </div>
 
         <div class="labelnigyou">お子様のお名前<br><span style="font-size: 13px;">（決まっていれば）</span></div>
-        <input type="text" id="childsname" placeholder="例：祖母2人、父、母 など">
+        <input type="text" id="childsname" placeholder="お子様のお名前を入力してください">
 
         <div class="label">お子様の性別（任意）</div>
         <div class="childsgender-buttons">
@@ -1043,14 +1046,14 @@
             ご兄弟情報<br>
             <span class="small-note">第一子の方は未記入で大丈夫です。</span>
         </div>
-        <div class="info-text">【一人目】ご兄弟のお名前</div>
+        <div class="info-text">ご兄弟のお名前</div>
         <input type="text" id="mugwortmainkid" placeholder="ご兄弟のお名前をご記入ください">
-        <div class="info-text">【一人目】ご兄弟の性別</div>
+        <div class="info-text">ご兄弟の性別</div>
         <div class="kimono-buttons">
             <button type="button" onclick="selectkimono(this)">男の子</button>
             <button type="button" onclick="selectkimono(this)">女の子</button>
         </div>
-        <div class="info-text">【一人目】ご兄弟の年齢</div>
+        <div class="info-text">ご兄弟の年齢</div>
         <input type="tel" id="mugwortparticipants" placeholder="ご兄弟の年齢をご記入ください">
 
         <div class="info-text">【二人目以降】</div>
@@ -1074,7 +1077,7 @@
         </div>
 
         <div class="labelContent">ご質問/ご相談</div>
-        <textarea id="message" rows="4" placeholder="メッセージを入力してください"></textarea>
+        <textarea id="message" rows="4" placeholder="ご質問/ご相談を入力してください"></textarea>
 
         <button class="submit-button" onclick="submitForm()" div id="section-message">送信</button>
     </div>
@@ -1124,13 +1127,14 @@
         // ページが読み込まれたときに前回の入力内容を復元
         document.addEventListener('DOMContentLoaded', function () {
             const savedName = localStorage.getItem('name');
+            const savedYourresidentialaddress = localStorage.getItem('Yourresidentialaddress');
             const savedPhone = localStorage.getItem('phone');
-            const savedhyousatu = localStorage.getItem('hyousatu');
 
             if (savedName) document.getElementById('name').value = savedName;
+            if (savedYourresidentialaddress) document.getElementById('Yourresidentialaddress').value = savedYourresidentialaddress;
             if (savedPhone) document.getElementById('phone').value = savedPhone;
-            if (savedhyousatu) document.getElementById('hyousatu').value = savedhyousatu;
         });
+
 
         // スムーズスクロール
         document.querySelectorAll('.side-nav a').forEach(anchor => {
@@ -1145,6 +1149,19 @@
                     });
                 }
             });
+        });
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const ua = navigator.userAgent.toLowerCase();
+            const isLine = ua.includes("line");
+            const isMobile = ua.includes("iphone") || ua.includes("android");
+
+            if (isLine && isMobile) {
+                const infoText = document.querySelector('.info-text');
+                if (infoText) {
+                    infoText.style.display = 'none';
+                }
+            }
         });
 
         function formatDateTime(dateTimeString) {
@@ -1474,6 +1491,7 @@
     phone: document.getElementById('phone').value.trim(),
     hyousatu: document.getElementById('hyousatu').value.trim(),
     birthweight: document.getElementById('birthweight').value.trim(),
+    Yourresidentialaddress: document.getElementById('Yourresidentialaddress').value.trim(),
     childsname: document.getElementById('childsname').value.trim(),
     Participateintheshooting: document.getElementById('Participateintheshooting').value.trim(),
                 mugwortparticipants: document.getElementById('mugwortparticipants').value.trim(),
@@ -1507,6 +1525,11 @@
                 return;
             }
 
+            if (!formData.Yourresidentialaddress) {
+                alert('ご住所を入力してください');
+                return;
+            }
+
             if (!formData.dates[0]) {
                 alert('第1希望日※必須を選択してください。');
                 return;
@@ -1515,7 +1538,7 @@
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `【予約フォーム】\nお名前\n・${formData.name}\n\n電話番号\n・${formData.phone}\n\n表札名\n・${formData.hyousatu}\n\nプラン\n・${formData.visitCount}\n\nお子様のお誕生日\n・${formatDateOnly(formData.dates[3])}\n\n自然分娩 or 帝王切開\n・${formData.FreshflowerphotographyCount}\n\nお子様のお名前\n・${formData.childsname}\n\nお子様の性別\n・${formData.childsgenderCount}\n\n出生体重\n・${formData.birthweight}\n\n｟ご兄弟のお名前｠\n・${formData.mugwortmainkid}\n\n｟ご兄弟の性別｠\n・${formData.kimonoCount}\n\n｟ご兄弟の年齢｠\n・${formData.mugwortparticipants}\n\n｟二人目ご兄弟のお名前｠\n・${formData.mugwortmainkid2}\n\n撮影に参加\n・${formData.Participateintheshooting}\n\n生花撮影\n・${formData.kimono4Count}\n\nお支度\n・${formData.hairmakeupCount}\n\n【希望日時】\n｟第一希望日｠\n${formatDateWithTime(formData.dates[0])}\n｟希望時間1｠\n・${formData.kibou1Count}\n\n｟第二希望日｠\n${formatDateWithTime(formData.dates[1])}\n｟希望時間2｠\n・${formData.kibou2Count}\n\n｟第三希望日｠\n${formatDateWithTime(formData.dates[2])}\n｟希望時間3｠\n・${formData.kibou3Count}\n\n｟メッセージ｠\n${formData.message}`
+                text: `【予約フォーム】\nお名前\n・${formData.name}\n\n電話番号\n・${formData.phone}\n\n｟ご住所｠\n・${formData.Yourresidentialaddress}\n\n表札名\n・${formData.hyousatu}\n\nプラン\n・${formData.visitCount}\n\nお子様のお誕生日\n・${formatDateOnly(formData.dates[3])}\n\n自然分娩 or 帝王切開\n・${formData.FreshflowerphotographyCount}\n\nお子様のお名前\n・${formData.childsname}\n\nお子様の性別\n・${formData.childsgenderCount}\n\n出生体重\n・${formData.birthweight}\n\n｟ご兄弟のお名前｠\n・${formData.mugwortmainkid}\n\n｟ご兄弟の性別｠\n・${formData.kimonoCount}\n\n｟ご兄弟の年齢｠\n・${formData.mugwortparticipants}\n\n｟二人目ご兄弟のお名前｠\n・${formData.mugwortmainkid2}\n\n撮影に参加\n・${formData.Participateintheshooting}\n\n生花撮影\n・${formData.kimono4Count}\n\nお支度\n・${formData.hairmakeupCount}\n\n【希望日時】\n｟第一希望日｠\n${formatDateWithTime(formData.dates[0])}\n｟希望時間1｠\n・${formData.kibou1Count}\n\n｟第二希望日｠\n${formatDateWithTime(formData.dates[1])}\n｟希望時間2｠\n・${formData.kibou2Count}\n\n｟第三希望日｠\n${formatDateWithTime(formData.dates[2])}\n｟希望時間3｠\n・${formData.kibou3Count}\n\n｟ご質問/ご相談｠\n${formData.message}`
             }]).then(() => {
                 alert('お問合せありがとうございます。追って担当者から返信をさせて頂きます。');
                 liff.closeWindow();
