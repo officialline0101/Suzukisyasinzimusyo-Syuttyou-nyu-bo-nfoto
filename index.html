@@ -120,8 +120,42 @@
 
         .label {
             display: block;
-            margin-top: 3px;
-            /* ← 追加 */
+            margin-top: 10px;
+            /* ← ここを変更 */
+            margin-bottom: 10px;
+            padding: 3px;
+            font-weight: 600;
+            background-color: #a8b9a7;
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
+            text-align: center;
+            text-indent: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .labelhidarizurasi {
+            display: block;
+            margin-top: 10px;
+            /* ← ここを変更 */
+            margin-bottom: 10px;
+            padding: 3px;
+            font-weight: 600;
+            background-color: #a8b9a7;
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
+            text-align: center;
+            text-indent: 0px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .labelkakikukeko {
+            display: block;
+            margin-top: 10px;
+            /* ← ここを変更 */
             margin-bottom: 10px;
             padding: 3px;
             font-weight: 600;
@@ -177,7 +211,7 @@
         textarea {
             width: 100%;
             padding: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 3px;
             border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
@@ -951,13 +985,10 @@
         <div class="label">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
-        <div class="labelnigyou">出張先ご住所の<br>表札名(里帰りの場合)</div>
+        <div class="labelnigyou">出張先ご住所の表札名<br><span style="font-size: 14px;">(里帰りの場合)</span></div>
         <input type="text" id="hyousatu" placeholder="表札名を入力してください" oninput="saveInput('hyousatu')">
 
-        <div class="highlight-background">
-            <div class="kibounitizi">撮影希望日<span class="required">必須</span></div>
-        </div>
-
+<div class="label">撮影希望日<span class="required">必須</span></div>
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
             <span class="placeholder" id="placeholder1">⇩タップして日付を入力⇩</span>
@@ -971,10 +1002,7 @@
             <button type="button" id="sankibou1" onclick="selectkibou1(this)">相談したい</button>
         </div>
 
-        <div class="highlight-background">
-            <span class="kibounitizi">第2希望日<span class="required">必須</span></span>
-        </div>
-
+        <div class="label">第2希望日<span class="required">必須</span></div>
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
             <span class="placeholder" id="placeholder2">⇩タップして日時を入力⇩</span>
@@ -988,9 +1016,7 @@
             <button type="button" id="sankibou2" onclick="selectkibou2(this)">相談したい</button>
         </div>
 
-        <div class="highlight-background">
-            <span class="kibounitizi">第3希望日(任意)</span>
-        </div>
+        <div class="labelhidarizurasi">第3希望日</div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
@@ -1013,9 +1039,7 @@
             <button type="button" id="yonVisit" onclick="selectVisit(this)">赤ちゃんのいる暮らしプラン　37,000円+税</button>
         </div>
 
-        <div class="highlight-background">
-            <div class="kibounitizi">お子様のお誕生日（任意）</span></div>
-        </div>
+                <div class="labelhidarizurasi">お子様のお誕生日</div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
@@ -1023,7 +1047,7 @@
             <input type="date" id="date4" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
-        <div class="label">自然分娩 or 帝王切開（任意）</div>
+        <div class="labelhidarizurasi">自然分娩 or 帝王切開</div>
         <div class="Freshflowerphotography-buttons">
             <button type="button" onclick="selectFreshflowerphotography(this)">自然分娩</button>
             <button type="button" onclick="selectFreshflowerphotography(this)">帝王切開</button>
@@ -1032,7 +1056,7 @@
         <div class="labelnigyou">お子様のお名前<br><span style="font-size: 13px;">（決まっていれば）</span></div>
         <input type="text" id="childsname" placeholder="お子様のお名前を入力してください">
 
-        <div class="label">お子様の性別（任意）</div>
+        <div class="labelhidarizurasi">お子様の性別</div>
         <div class="childsgender-buttons">
             <button type="button" onclick="selectchildsgender(this)">男の子</button>
             <button type="button" onclick="selectchildsgender(this)">女の子</button>
@@ -1044,7 +1068,7 @@
 
         <div class="labelContent">
             ご兄弟情報<br>
-            <span class="small-note">第一子の方は未記入で大丈夫です。</span>
+            <span class="small-note"><span style="font-size: 14px;">第一子の方は未記入で大丈夫です</span></span>
         </div>
         <div class="info-text">ご兄弟のお名前</div>
         <input type="text" id="mugwortmainkid" placeholder="ご兄弟のお名前をご記入ください">
@@ -1059,7 +1083,7 @@
         <div class="info-text">【二人目以降】</div>
         <input type="text" id="mugwortmainkid2" placeholder="ご兄弟のお名前・性別・年齢をご記入ください">
 
-        <div class="labelnigyou">撮影に参加される方の<br>人数と続柄（任意）</div>
+        <div class="labelnigyou">撮影に参加される方の人数と続柄</div>
         <input type="text" id="Participateintheshooting" placeholder="撮影に参加される方の人数と続柄をご記入ください">
 
         <div class="label">生花撮影ご希望の有無<span class="required">必須</span></div>
